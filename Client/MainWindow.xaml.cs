@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Commands.Services.Use_Case;
 using Commands.Use_Case;
+using DiagramsElementsLibrary;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Drawing;
-using System.IO;
-using System.Windows.Media.Imaging;
-using Commands.Services.Use_Case;
+using System.Windows;
 
 namespace Client;
 
@@ -18,26 +15,29 @@ namespace Client;
 /// </summary>
 public partial class MainWindow : Window
 {
+    /// <summary>
+    /// The separator
+    /// </summary>
     private const string Separator = "\r\n";
+    /// <summary>
+    /// The diagram
+    /// </summary>
     private Diagram _diagram = new() { Elements = new List<IElement?>()};
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MainWindow"/> class.
+    /// </summary>
     public MainWindow()
     {
         InitializeComponent();
-
-        Bitmap bitmap = new Bitmap(ConvertToImage(ImgDiagram), Convert.ToInt32(ImgDiagram.ActualWidth), Convert.ToInt32(ImgDiagram.ActualHeight));
-
+        (new DiagramsElementsLibrary.Use_Case.AddPrecedent()).Draw(new Precedent() {Id = 1, Name = "Test"}, ImgDiagram);
     }
 
-    private System.Drawing.Image ConvertToImage(System.Windows.Controls.Image img)
-    {
-        MemoryStream ms = new MemoryStream();
-        System.Windows.Media.Imaging.BmpBitmapEncoder bbe = new BmpBitmapEncoder();
-        bbe.Frames.Add(BitmapFrame.Create(new Uri(img.Source.ToString(), UriKind.RelativeOrAbsolute)));
-
-        bbe.Save(ms);
-        return System.Drawing.Image.FromStream(ms);
-    }
-
+    /// <summary>
+    /// Strings the format rich text box.
+    /// </summary>
+    /// <param name="richTextBox">The rich text box.</param>
+    /// <returns>System.String.</returns>
     private string StringFormatRichTextBox(RichTextBox richTextBox)
     {
         var textRange = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
@@ -45,9 +45,14 @@ public partial class MainWindow : Window
         return textRange.Text;
     }
 
+    /// <summary>
+    /// Handles the KeyDown event of the TbConsole control.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="KeyEventArgs"/> instance containing the event data.</param>
     private void TbConsole_KeyDown(object sender, KeyEventArgs e)
     {
-        if(e.Key == Key.F1)
+        if (e.Key == Key.F1)
         {
             var commandSet = StringFormatRichTextBox(TbConsole).Split(Separator);
 

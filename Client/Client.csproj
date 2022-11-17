@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Commands\Commands.csproj" />
+    <ProjectReference Include="..\DiagramsElementsLibrary\DiagramsElementsLibrary.csproj" />
   </ItemGroup>
 
 </Project>
