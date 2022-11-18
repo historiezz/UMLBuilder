@@ -1,4 +1,6 @@
-﻿namespace Commands.Use_Case;
+﻿using System.Dynamic;
+
+namespace Commands.Use_Case;
 
 /// <summary>
 /// Class Diagram.
@@ -14,5 +16,5 @@ public class Diagram
     /// Gets or sets the elements.
     /// </summary>
     /// <value>The elements.</value>
-    public List<IElement?> Elements { get; set; }
+    public List<IElement?>? Elements { get; set; }
 }

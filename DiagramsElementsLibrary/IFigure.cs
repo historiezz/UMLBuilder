@@ -32,5 +32,5 @@ public interface IFigure
     /// Draws this instance.
     /// </summary>
     /// <returns>StackPanel.</returns>
-    public StackPanel Draw(IElement element, Grid grid);
+    public Panel Draw(IElement element, Panel panel, int numberOfElements);
 }

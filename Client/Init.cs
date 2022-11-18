@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
-namespace Client
+namespace Client;
+
+public static class Init
 {
-    public static class Init
-    {
-        public static Bitmap bitmap;
-        public static Image image;
-        public static Pen pen;
-
-    }
+    public static Bitmap bitmap;
+    public static Image image;
+    public static Pen pen;
 }
