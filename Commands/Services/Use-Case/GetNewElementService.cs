@@ -2,7 +2,10 @@
 
 namespace Commands.Services.Use_Case;
 
-public class GetNewElement
+/// <summary>
+/// Class GetNewElement.
+/// </summary>
+public class GetNewElementService
 {
     /// <summary>
     /// Поиск элемента.
@@ -11,7 +14,12 @@ public class GetNewElement
     /// <returns>Найденный элемент.</returns>
     public static IElement? GetNewElementAction(string[]? pair)
     {
-        return (pair[0] == "Актор" ? new Actor() { Id = 0, Name = pair[1] } :
-            pair[0] == "Прецедент" ? new Precedent() { Id = 0, Name = pair[1] } : null);
+        if (pair?[0] == "Прецедент")
+        {
+            Precedent.Count++;
+        }
+
+        return (pair?[0] == "Актор" ? new Actor() { Name = pair[1] } :
+            pair?[0] == "Прецедент" ? new Precedent() { Name = pair[1] } : null);
     }
 }

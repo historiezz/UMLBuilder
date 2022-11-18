@@ -2,7 +2,10 @@
 
 namespace Commands.Services.Use_Case;
 
-public class AddCommand
+/// <summary>
+/// Class AddCommand.
+/// </summary>
+public class AddCommandService
 {
     /// <summary>
     /// Добавление команды (прецедента или актора).
@@ -12,6 +15,6 @@ public class AddCommand
     public static IElement? AddCommandAction(string command)
     {
         var pair = command.Split(' ');
-        return GetNewElement.GetNewElementAction(pair);
+        return GetNewElementService.GetNewElementAction(pair);
     }
 }

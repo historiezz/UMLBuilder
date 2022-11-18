@@ -2,14 +2,17 @@
 
 namespace Commands.Services.Use_Case;
 
-public class AddRelation
+/// <summary>
+/// Class AddRelation.
+/// </summary>
+public class AddRelationService
 {
     /// <summary>
     /// Добавление связи.
     /// </summary>
     /// <param name="command">Текст команды.</param>
     /// <param name="diagram">Диаграмма.</param>
-    /// <returns></returns>
+    /// <returns>Relation.</returns>
     public static Relation AddRelationAction(string command, Diagram diagram)
     {
         var pair = command.Split('+');

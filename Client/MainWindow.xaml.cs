@@ -1,6 +1,6 @@
 ﻿using Commands.Services.Use_Case;
 using Commands.Use_Case;
-using DiagramsElementsLibrary;
+using DiagramsElementsLibrary.Use_Case;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Controls;
@@ -22,7 +22,7 @@ public partial class MainWindow : Window
     /// <summary>
     /// The diagram
     /// </summary>
-    private Diagram _diagram = new() { Elements = new List<IElement?>()};
+    private readonly Diagram _diagram = new() { Elements = new List<IElement?>()};
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MainWindow"/> class.
@@ -30,7 +30,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        (new DiagramsElementsLibrary.Use_Case.AddPrecedent()).Draw(new Precedent() {Id = 1, Name = "Test"}, ImgDiagram);
     }
 
     /// <summary>
@@ -62,8 +61,31 @@ public partial class MainWindow : Window
                 var matchCollection = regex.Matches(command);
 
                 _diagram.Elements.Add(matchCollection.Count == 0
-                    ? AddCommand.AddCommandAction(command)
-                    : AddRelation.AddRelationAction(command, _diagram));
+                    ? AddCommandService.AddCommandAction(command)
+                    : AddRelationService.AddRelationAction(command, _diagram));
+            }
+        }
+
+        DrawShapes();
+    }
+
+    /// <summary>Draws the shapes.</summary>
+    private void DrawShapes()
+    {
+        if (_diagram.Elements == null) return;
+        foreach (var element in _diagram.Elements)
+        {
+            if (element?.GetType() == typeof(Precedent))
+            {
+                (new AddPrecedent()).Draw(element, ImgDiagram, _diagram.Elements.Count);
+            }
+            else if (element?.GetType() == typeof(Actor))
+            {
+                (new AddActor()).Draw(element, ImgDiagram, 0);
+            }
+            else if (element?.GetType() == typeof(Relation))
+            {
+                (new AddRelation()).Draw(element, ImgDiagram, 0);
             }
         }
     }
