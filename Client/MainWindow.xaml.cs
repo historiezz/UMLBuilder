@@ -51,6 +51,7 @@ public partial class MainWindow : Window
     /// <param name="e">The <see cref="KeyEventArgs"/> instance containing the event data.</param>
     private void TbConsole_KeyDown(object sender, KeyEventArgs e)
     {
+        ClearWhenRestarting();
         if (e.Key == Key.F1)
         {
             var commandSet = StringFormatRichTextBox(TbConsole).Split(Separator);
@@ -60,13 +61,21 @@ public partial class MainWindow : Window
                 var regex = new Regex(@".+\+.+");
                 var matchCollection = regex.Matches(command);
 
-                _diagram.Elements.Add(matchCollection.Count == 0
+                _diagram.Elements?.Add(matchCollection.Count == 0
                     ? AddCommandService.AddCommandAction(command)
                     : AddRelationService.AddRelationAction(command, _diagram));
             }
         }
 
         DrawShapes();
+    }
+
+    /// <summary>Clears the when restarting.</summary>
+    private void ClearWhenRestarting()
+    {
+        ImgDiagram.Children.Clear();
+        _diagram.Elements?.Clear();
+        Precedent.Count = 0;
     }
 
     /// <summary>Draws the shapes.</summary>
