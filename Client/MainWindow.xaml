@@ -4,14 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="UML-ПОСТРОИТЕЛЬ" MinHeight="450" MinWidth="800" MaxWidth="900" MaxHeight="1200">
-    <Grid Name ="MainGrid">
+        Title="UML-ПОСТРОИТЕЛЬ" MinHeight="900" MinWidth="1200" MaxWidth="900" MaxHeight="1200">
+    <Grid Name ="MainGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <RichTextBox x:Name="TbConsole" Grid.Column="0" KeyDown="TbConsole_KeyDown"></RichTextBox>
-        <Canvas Name="ImgDiagram" Grid.Column="1">
-        </Canvas>
+        <RichTextBox x:Name="TbConsole" Grid.Column="0" KeyDown="TbConsole_KeyDown" InputScope="Xml" VerticalScrollBarVisibility="Visible"/>
+        <Canvas Name="ImgDiagram" Grid.Column="1"/>
     </Grid>
 </Window>

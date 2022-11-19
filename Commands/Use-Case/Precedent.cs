@@ -24,6 +24,6 @@ public class Precedent : IElement
     /// <summary>Initializes a new instance of the <see cref="T:Commands.Use_Case.Precedent" /> class.</summary>
     public Precedent()
     {
-        Id = Count;
+        Id = Count - 1;
     }
 }

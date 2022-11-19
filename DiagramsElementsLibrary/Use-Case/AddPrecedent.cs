@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -23,16 +24,26 @@ public class AddPrecedent : IFigure
     /// </summary>
     /// <value>The y.</value>
     public double Y { get; set; }
+
     /// <summary>
     /// Gets or sets the w.
     /// </summary>
     /// <value>The w.</value>
-    public double W { get; set; }
+    public double W { get; set; } = 100;
+
     /// <summary>
     /// Gets or sets the h.
     /// </summary>
     /// <value>The h.</value>
-    public double H { get; set; }
+    public double H { get; set; } = 50;
+
+    /// <summary>Gets or sets the actual size of the font.</summary>
+    /// <value>The actual size of the font.</value>
+    public double ActualFontSize { get; set; } = 12;
+
+    /// <summary>Gets or sets the actual offset.</summary>
+    /// <value>The actual offset.</value>
+    public double ActualOffset { get; set; } = 20;
     /// <summary>
     /// Draws this instance.
     /// </summary>
@@ -42,8 +53,8 @@ public class AddPrecedent : IFigure
     /// <returns>StackPanel.</returns>
     public Panel Draw(IElement element, Panel panel, int numberOfElements)
     {
-        this.W = 100;
-        this.H = 50;
+        SizeAdaptation(panel, numberOfElements);
+
         var canvas = new Canvas();
         panel.Children.Add(canvas);
 
@@ -70,8 +81,9 @@ public class AddPrecedent : IFigure
             Name = "textBlock" + element.Id,
             Text = element.Name,
             TextAlignment = TextAlignment.Center,
-            Width = 80,
-            Height = 20
+            Width = W - ActualOffset,
+            Height = H - ActualOffset,
+            FontSize = ActualFontSize
         };
         canvas.Children.Add(textBlock);
 
@@ -81,5 +93,19 @@ public class AddPrecedent : IFigure
         #endregion
 
         return canvas;
+    }
+
+    /// <summary>Sizes the adaptation.</summary>
+    /// <param name="panel">The panel.</param>
+    /// <param name="numberOfElements">The number of elements.</param>
+    private void SizeAdaptation(FrameworkElement panel, int numberOfElements)
+    {
+        while (numberOfElements > (Convert.ToInt32(panel.ActualHeight / H) - 1))
+        {
+            this.W *= 0.75;
+            this.H *= 0.75;
+            this.ActualFontSize *= 0.75;
+            this.ActualOffset *= 0.75;
+        }
     }
 }
