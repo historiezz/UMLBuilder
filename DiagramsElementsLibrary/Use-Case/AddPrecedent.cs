@@ -1,9 +1,9 @@
-﻿using System;
-using System.Windows;
+﻿using Commands.Use_Case;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using Commands.Use_Case;
+using System.Windows;
+using System;
 
 namespace DiagramsElementsLibrary.Use_Case;
 

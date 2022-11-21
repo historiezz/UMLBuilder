@@ -7,10 +7,10 @@
         Title="UML-ПОСТРОИТЕЛЬ" MinHeight="900" MinWidth="1200" MaxWidth="900" MaxHeight="1200">
     <Grid Name ="MainGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <RichTextBox x:Name="TbConsole" Grid.Column="0" KeyDown="TbConsole_KeyDown" InputScope="Xml" VerticalScrollBarVisibility="Visible"/>
-        <Canvas Name="ImgDiagram" Grid.Column="1"/>
-    </Grid>
+        <Canvas Name="ImgDiagram" Grid.Column="0" Background="#FFDEDEDE"/>
+        <RichTextBox x:Name="TbConsole" Grid.Column="1" KeyDown="TbConsole_KeyDown" InputScope="Xml" VerticalScrollBarVisibility="Visible"/>
+        </Grid>
 </Window>

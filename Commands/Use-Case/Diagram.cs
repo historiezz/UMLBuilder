@@ -1,6 +1,4 @@
-﻿using System.Dynamic;
-
-namespace Commands.Use_Case;
+﻿namespace Commands.Use_Case;
 
 /// <summary>
 /// Class Diagram.
