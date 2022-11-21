@@ -13,7 +13,7 @@ public class AddRelationService
     /// <param name="command">Текст команды.</param>
     /// <param name="diagram">Диаграмма.</param>
     /// <returns>Relation.</returns>
-    public static Relation AddRelationAction(string command, Diagram diagram)
+    public static Relation AddRelationAction(string command, Diagram? diagram)
     {
         var pair = command.Split('+');
         var newElement = new Relation()
