@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Commands": {
+      "commandName": "Project"
+    },
+    "Client": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\Данил\\source\\repos\\UMLBuilder\\Client\\bin"
+    }
+  }
+}

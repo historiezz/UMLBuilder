@@ -18,6 +18,10 @@ public class GetNewElementService
         {
             Precedent.Count++;
         }
+        if (pair?[0] == "Актор")
+        {
+            Actor.Count++;
+        }
 
         return (pair?[0] == "Актор" ? new Actor() { Name = pair[1] } :
             pair?[0] == "Прецедент" ? new Precedent() { Name = pair[1] } : null);

@@ -66,7 +66,7 @@ public partial class MainWindow : Window
                     var regex = new Regex(@".+\+.+");
                     var matchCollection = regex.Matches(command);
 
-                    _diagram.Elements?.Add(matchCollection.Count == 0
+                    _diagram.Elements?.Add(matchCollection.Count == 0 
                         ? AddCommandService.AddCommandAction(command)
                         : AddRelationService.AddRelationAction(command, _diagram));
                 }
@@ -143,16 +143,16 @@ public partial class MainWindow : Window
         {
             if (element?.GetType() == typeof(Precedent))
             {
-                (new AddPrecedent()).Draw(element, ImgDiagram, _diagram.Elements.Count);
+                (new AddPrecedent()).Draw(element, ImgDiagram, _diagram.Elements.Count - Actor.Count);
             }
             else if (element?.GetType() == typeof(Actor))
             {
-                (new AddActor()).Draw(element, ImgDiagram, 0);
+                (new AddActor()).Draw(element, ImgDiagram, _diagram.Elements.Count - Precedent.Count);
             }
             else if (element?.GetType() == typeof(Relation))
             {
                 (new AddRelation()).Draw(element, ImgDiagram, 0);
-            }
+            }            
         }
     }
 }
