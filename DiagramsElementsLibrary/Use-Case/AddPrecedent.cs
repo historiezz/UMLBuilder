@@ -69,7 +69,7 @@ public class AddPrecedent : IFigure
         canvas.Children.Add(ellipse);
 
         var count = canvas.Children.Count;
-        Canvas.SetLeft(canvas.Children[count - 1], panel.ActualWidth / 3);
+        Canvas.SetLeft(canvas.Children[count - 1], panel.ActualWidth * 2 / 3);
         Canvas.SetTop(canvas.Children[count - 1], panel.ActualHeight * element.Id / numberOfElements);
 
         #endregion
@@ -87,7 +87,7 @@ public class AddPrecedent : IFigure
         };
         canvas.Children.Add(textBlock);
 
-        Canvas.SetLeft(canvas.Children[count], panel.ActualWidth / 3 + ellipse.Width / 2 - textBlock.Width / 2);
+        Canvas.SetLeft(canvas.Children[count], panel.ActualWidth * 2 / 3 + ellipse.Width / 2 - textBlock.Width / 2);
         Canvas.SetTop(canvas.Children[count], panel.ActualHeight * element.Id / numberOfElements + ellipse.Height / 2 - textBlock.Height / 2);
 
         #endregion

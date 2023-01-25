@@ -133,6 +133,7 @@ public partial class MainWindow : Window
         ImgDiagram.Children.Clear();
         _diagram?.Elements?.Clear();
         Precedent.Count = 0;
+        Actor.Count = 0;
     }
 
     /// <summary>Draws the shapes.</summary>
@@ -151,7 +152,7 @@ public partial class MainWindow : Window
             }
             else if (element?.GetType() == typeof(Relation))
             {
-                (new AddRelation()).Draw(element, ImgDiagram, 0);
+                (new AddRelation()).Draw(element, ImgDiagram, _diagram.Elements.Count);
             }            
         }
     }

@@ -33,23 +33,21 @@ public class AddActor : IFigure
         canvas.Children.Add(ellipse);
 
         var count = canvas.Children.Count;
-        Canvas.SetLeft(canvas.Children[count - 1], panel.ActualWidth / 20 );
-        Canvas.SetTop(canvas.Children[count - 1], panel.ActualHeight * element.Id /3/ numberOfElements );
-
+        Canvas.SetLeft(canvas.Children[count - 1], panel.ActualWidth / 10 );
+        Canvas.SetTop(canvas.Children[count - 1], panel.ActualHeight * element.Id / numberOfElements);
 
         #endregion
         #region Triangle
         var triangle = new Polygon();       
         triangle.Points = new PointCollection();
-        triangle.Points.Add(new Point(panel.ActualWidth / 20 - W / 2, panel.ActualHeight * element.Id /3/ numberOfElements  + 2*H));
-        triangle.Points.Add(new Point(panel.ActualWidth/ 20 + W/2, panel.ActualHeight * element.Id /3/ numberOfElements + H) );
-        triangle.Points.Add(new Point(panel.ActualWidth / 20 + (W*3)/2, panel.ActualHeight * element.Id /3/ numberOfElements + 2 * H));
+        triangle.Points.Add(new Point(panel.ActualWidth / 10 - W / 2, panel.ActualHeight * element.Id / numberOfElements  + 2*H));
+        triangle.Points.Add(new Point(panel.ActualWidth / 10 + W/2, panel.ActualHeight * element.Id / numberOfElements + H) );
+        triangle.Points.Add(new Point(panel.ActualWidth / 10 + (W*3)/2, panel.ActualHeight * element.Id / numberOfElements + 2 * H));
         triangle.Stroke = Brushes.Black;
         canvas.Children.Add(triangle);
-        Canvas.SetLeft(canvas.Children[count], panel.ActualWidth / 20 + ellipse.Width/2 - triangle.Width / 2 );
-        Canvas.SetTop(canvas.Children[count], panel.ActualHeight * element.Id  /3/ numberOfElements + triangle.Width * 2 );
+        Canvas.SetLeft(canvas.Children[count], panel.ActualWidth / 10 + ellipse.Width/2 - triangle.Width / 2 );
+        Canvas.SetTop(canvas.Children[count], panel.ActualHeight * element.Id  / numberOfElements + triangle.Width * 2 );
         #endregion
-
         #region TextBlock
         var textBlock = new TextBlock()
         {
@@ -61,8 +59,9 @@ public class AddActor : IFigure
             FontSize = ActualFontSize
         };
         canvas.Children.Add(textBlock);
-        Canvas.SetLeft(canvas.Children[count+1], panel.ActualWidth / 20 + ellipse.Width / 2 - textBlock.Width / 2);
-        Canvas.SetTop(canvas.Children[count+1], panel.ActualHeight * element.Id /3/ numberOfElements + textBlock.Width*2);
+
+        Canvas.SetLeft(canvas.Children[count+1], panel.ActualWidth / 10 + ellipse.Width / 2 - textBlock.Width / 2);
+        Canvas.SetTop(canvas.Children[count+1], panel.ActualHeight * element.Id / numberOfElements + ellipse.Height*2.5 - textBlock.Height/2);
         #endregion
 
 
@@ -71,7 +70,7 @@ public class AddActor : IFigure
     }
     private void SizeAdaptation(FrameworkElement panel, int numberOfElements)
     {
-        while (numberOfElements > (Convert.ToInt32(panel.ActualHeight / H/2) - 1))
+        while (numberOfElements > (Convert.ToInt32(panel.ActualHeight / H) - 1))
         {
             this.W *= 0.75;
             this.H *= 0.75;

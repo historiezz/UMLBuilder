@@ -27,8 +27,7 @@ public class AddRelation : IFigure
         relation.Stroke = Brushes.Black;
         canvas.Children.Add(relation);
         var count = canvas.Children.Count;
-        Canvas.SetLeft(canvas.Children[count - 1], panel.ActualWidth / 20);
-        Canvas.SetTop(canvas.Children[count - 1], panel.ActualHeight * element.Id / 2 / (numberOfElements));
+      
         #endregion
         return canvas;
     }
